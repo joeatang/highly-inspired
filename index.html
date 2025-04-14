@@ -15,6 +15,14 @@
             font-family: 'Inter', sans-serif;
         }
     </style>
+    <!-- Add Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <!-- Add Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
 </head>
 <body class="bg-gray-900 flex justify-center py-10">
 
@@ -110,8 +118,29 @@
         <section class="text-center space-y-4">
             <h2 class="text-xl font-semibold">Global HI Map</h2>
             <div>
-                <img src="https://via.placeholder.com/600x400.png?text=World+Map+Image" alt="Global HI Map" class="w-full rounded-lg shadow-md mx-auto">
-                <!-- Replace ^^^ src with your actual map image path -->
+                <div id="map" style="height: 400px; width: 100%;" class="rounded-lg shadow-md"></div>
+                <script>
+                    var map = L.map('map').setView([20, 0], 2);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+
+                    // Add markers for each city
+                    L.marker([35.6762, 139.6503]).addTo(map)  // Tokyo
+                        .bindPopup('Tokyo, Japan<br>Staying Hi: 11');
+                    
+                    L.marker([-22.9068, -43.1729]).addTo(map)  // Rio
+                        .bindPopup('Rio de Janeiro, Brazil<br>Staying Hi: 13');
+                    
+                    L.marker([-33.9249, 18.4241]).addTo(map)   // Cape Town
+                        .bindPopup('Cape Town, South Africa<br>Staying Hi: 9');
+                    
+                    L.marker([41.3851, 2.1734]).addTo(map)     // Barcelona
+                        .bindPopup('Barcelona, Spain<br>Staying Hi: 12');
+                    
+                    L.marker([-37.8136, 144.9631]).addTo(map)  // Melbourne
+                        .bindPopup('Melbourne, Australia<br>Staying Hi: 10');
+                </script>
             </div>
             <p class="text-sm text-gray-600">
                 Each 👋 represents a real-time HI submission
