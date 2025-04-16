@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequency Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Style select to remove default arrow and add padding */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22%236b7280%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M5.293%207.293a1%201%200%20011.414%200L10%2010.586l3.293-3.293a1%201%200%20111.414%201.414l-4%204a1%201%200%2001-1.414%200l-4-4a1%201%200%20010-1.414z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.25em 1.25em;
+            padding-right: 2.5rem; /* Make space for arrow */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex justify-center items-start min-h-screen py-10 px-4">
+
+    <div class="bg-white w-full max-w-lg rounded-lg shadow-md p-6 md:p-8 space-y-6 md:space-y-8">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center">
+             <div class="text-3xl font-black text-blue-600">Hi</div>
+             <div class="flex items-center space-x-2 text-sm font-medium text-gray-700">
+                 <span>Hi Island</span>
+                 <span class="text-xl">🌎</span>
+             </div>
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-center text-lg font-semibold text-gray-800">
+            Where's your frequency right now?
+        </h1>
+
+        <!-- Tabs -->
+        <div class="border-b border-gray-200">
+            <nav class="-mb-px flex justify-center space-x-6 md:space-x-8 text-sm font-medium text-gray-500">
+                <a href="#" class="border-b-2 border-gray-900 text-gray-900 py-2 px-1">Hi Energy</a>
+                <a href="#" class="border-b-2 border-transparent hover:border-gray-400 hover:text-gray-700 py-2 px-1">Neutral</a>
+                <a href="#" class="border-b-2 border-transparent hover:border-gray-400 hover:text-gray-700 py-2 px-1">Hi Inspiration</a>
+            </nav>
+        </div>
+
+        <!-- Form -->
+        <form class="space-y-6" action="hi-per-moment.html" method="get">
+             <!-- Feeling Now -->
+             <div>
+                 <label for="current-feeling" class="block text-sm font-medium text-gray-700 mb-1">
+                     What emotion best describes how you're feeling right now?
+                 </label>
+                 <select id="current-feeling" name="current-feeling" class="w-full bg-gray-100 border-gray-100 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                     <option value="">Select a feeling</option>
+                     <option value="joy">Joy</option>
+                     <option value="passion">Passion</option>
+                     <option value="enthusiasm">Enthusiasm</option>
+                     {/* Add more options here */}
+                 </select>
+             </div>
+
+             <!-- Button 1 -->
+             <div>
+                 <button type="button" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200">
+                     Say Hi to this feeling
+                 </button>
+             </div>
+
+             <!-- Desired Feeling -->
+             <div>
+                 <label for="desired-emotion" class="block text-sm font-medium text-gray-700 mb-1">
+                     Is there a feeling you'd like to hold onto or invite in?
+                 </label>
+                 <select id="desired-emotion" name="desired-emotion" class="w-full bg-gray-100 border-gray-100 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                     <option value="">Select a desired emotion</option>
+                     <option value="gratitude">Gratitude</option>
+                     <option value="peace">Peace</option>
+                     <option value="confidence">Confidence</option>
+                      {/* Add more options here */}
+                 </select>
+             </div>
+
+             <!-- Why Important -->
+             <div>
+                  <label for="why-important" class="block text-sm font-medium text-gray-700 mb-1">
+                      Why is that feeling important to you today?
+                  </label>
+                  <p class="text-xs text-gray-500 mb-2">Write a thought, a reason, or even a word. This part is just for you.</p>
+                  <textarea id="why-important" name="why-important" rows="4" class="w-full bg-gray-100 border-gray-100 rounded-lg p-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Because when I feel grateful, I'm more present and generous."></textarea>
+             </div>
+
+            <!-- Button 2 -->
+            <div class="pt-4">
+                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200">
+                    Reflect
+                </button>
+            </div>
+        </form>
+
+
+    </div>
+
+</body>
+</html>
