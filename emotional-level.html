@@ -13,6 +13,12 @@
         .icon-circle {
             @apply bg-violet-100 text-violet-600 rounded-full w-8 h-8 flex items-center justify-center text-lg shrink-0; /* Added shrink-0 */
         }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-gray-50 flex justify-center items-start min-h-screen py-10 px-4">
@@ -20,96 +26,348 @@
     <div class="bg-white w-full max-w-lg rounded-lg shadow-md p-6 md:p-8 space-y-6 md:space-y-8">
 
         <!-- Header -->
-        <div class="flex justify-between items-center">
-             <div class="text-3xl font-black text-blue-600">HI</div>
-             <div class="flex items-center space-x-2 text-sm font-medium text-gray-700">
-                 <span>Hi Island</span>
-                 <span class="text-xl">🌎</span>
-             </div>
+        <div class="relative flex flex-col items-center">
+            <div class="absolute right-0 top-0 flex items-center space-x-2 text-sm font-medium text-gray-700">
+                <a href="home.html"><span><span class="text-xl">🌍</span> Hi Island</span></a>
+            </div>
+            <a href="home.html"><img src="HI_Logo.png" alt="HI Logo" class="w-12 h-auto"></a>
+            <!-- <div class="text-sm font-semibold text-gray-700 mt-2">Today's Hiffirmation</div> -->
         </div>
 
         <!-- Title -->
         <h1 class="text-center text-lg font-semibold text-gray-800">
-            Happiness Indicator 2: Current Emotional Level?
+            Happiness Indicator 1: Current Vibe Level
         </h1>
 
         <!-- Tabs -->
         <div class="border-b border-gray-200">
-            <nav class="-mb-px flex justify-center space-x-6 md:space-x-8 text-sm font-medium text-gray-500">
-                <a href="#" class="border-b-2 border-gray-900 text-gray-900 py-2 px-1">Hi Energy (Alignment)</a>
-                <a href="#" class="border-b-2 border-transparent hover:border-gray-400 hover:text-gray-700 py-2 px-1">Neutral Zone (Tuning)</a>
-                <a href="#" class="border-b-2 border-transparent hover:border-gray-400 hover:text-gray-700 py-2 px-1">Hi Opportunity (Healing)</a>
+            <nav class="-mb-px flex justify-between text-sm font-medium text-gray-500">
+                <a href="#" class="tab-link flex-1 text-center border-b-2 border-gray-900 text-gray-900 py-2 px-1" data-tab="hi-energy">Hi Energy</a>
+                <a href="#" class="tab-link flex-1 text-center border-b-2 border-transparent hover:border-gray-400 hover:text-gray-700 py-2 px-1" data-tab="neutral">Neutral</a>
+                <a href="#" class="tab-link flex-1 text-center border-b-2 border-transparent hover:border-gray-400 hover:text-gray-700 py-2 px-1" data-tab="hi-opportunity">Hi Opportunity</a>
             </nav>
         </div>
 
-        <!-- List -->
-        <div class="space-y-5">
-            <!-- Item 1 -->
-            <div class="flex items-start space-x-4">
+        <!-- Hi Energy Tab Content -->
+        <div id="hi-energy" class="tab-content active space-y-5">
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
                 <div class="icon-circle"><span>😊</span></div>
                 <div>
-                    <h3 class="font-semibold text-gray-800">Joy / Appreciation / Empowerment</h3>
-                    <p class="text-sm text-gray-600">Top of the Scale - Alignment</p>
+                    <h3 class="font-semibold text-gray-800">Joy</h3>
+                    <p class="text-sm text-gray-600">You're flowing with life. Aligned and present.</p>
                 </div>
             </div>
-            <!-- Item 2 -->
-            <div class="flex items-start space-x-4">
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>🙏</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Appreciation</h3>
+                    <p class="text-sm text-gray-600">You're seeing the best in what is.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>💪</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Empowerment</h3>
+                    <p class="text-sm text-gray-600">You feel tuned in, tapped in, turned on.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>🕊️</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Freedom</h3>
+                    <p class="text-sm text-gray-600">You're allowing. No resistance, no limits.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>❤️</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Love</h3>
+                    <p class="text-sm text-gray-600">You're vibrationally connected - to yourself, to others, to Source.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
                 <div class="icon-circle"><span>🔥</span></div>
                 <div>
                     <h3 class="font-semibold text-gray-800">Passion</h3>
-                    <p class="text-sm text-gray-600">High vibration energy</p>
+                    <p class="text-sm text-gray-600">You're energized by purpose and direction.</p>
                 </div>
             </div>
-            <!-- Item 3 -->
-            <div class="flex items-start space-x-4">
-                 <div class="icon-circle"><span>🎉</span></div>
-                 <div>
-                     <h3 class="font-semibold text-gray-800">Enthusiasm / Eagerness / Happiness</h3>
-                     <p class="text-sm text-gray-600">Positive emotional state</p>
-                 </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>🎉</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Enthusiasm</h3>
+                    <p class="text-sm text-gray-600">You feel alive about what's coming.</p>
+                </div>
             </div>
-            <!-- Item 4 -->
-            <div class="flex items-start space-x-4">
-                 <div class="icon-circle"><span>✨</span></div>
-                 <div>
-                     <h3 class="font-semibold text-gray-800">Positive Expectation / Belief</h3>
-                     <p class="text-sm text-gray-600">Forward-looking optimism</p>
-                 </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>🚀</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Eagerness</h3>
+                    <p class="text-sm text-gray-600">You're leaning forward into what's next.</p>
+                </div>
             </div>
-             <!-- Item 5 -->
-             <div class="flex items-start space-x-4">
-                 <div class="icon-circle"><span>☀️</span></div>
-                 <div>
-                     <h3 class="font-semibold text-gray-800">Optimism</h3>
-                     <p class="text-sm text-gray-600">Positive outlook</p>
-                 </div>
-             </div>
-             <!-- Item 6 -->
-             <div class="flex items-start space-x-4">
-                  <div class="icon-circle"><span>🎈</span></div>
-                  <div>
-                      <h3 class="font-semibold text-gray-800">Hopefulness</h3>
-                      <p class="text-sm text-gray-600">Expectation of good</p>
-                  </div>
-             </div>
-             <!-- Item 7 -->
-             <div class="flex items-start space-x-4">
-                   <div class="icon-circle"><span>😌</span></div>
-                   <div>
-                       <h3 class="font-semibold text-gray-800">Contentment</h3>
-                       <p class="text-sm text-gray-600">Peaceful satisfaction</p>
-                   </div>
-             </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😊</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Happiness</h3>
+                    <p class="text-sm text-gray-600">You feel emotionally stable and vibrationally uplifted.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>✨</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Positive Expectation / Belief</h3>
+                    <p class="text-sm text-gray-600">You trust that what you desire is on its way.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>☀️</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Optimism</h3>
+                    <p class="text-sm text-gray-600">You're beginning to see the path light up.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>🎈</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Hopefulness</h3>
+                    <p class="text-sm text-gray-600">You've released resistance and opened space for more.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😌</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Contentment</h3>
+                    <p class="text-sm text-gray-600">You're okay with where you are - and open to more.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Neutral Tab Content -->
+        <div id="neutral" class="tab-content space-y-5">
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😐</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Boredom</h3>
+                    <p class="text-sm text-gray-600">You're stable, but ready to feel more.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😕</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Pessimism</h3>
+                    <p class="text-sm text-gray-600">You're not expecting much - but awareness is the first step.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😤</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Frustration / Irritation / Impatience</h3>
+                    <p class="text-sm text-gray-600">You sense what you want, but feel stuck in contrast.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😫</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Overwhelm</h3>
+                    <p class="text-sm text-gray-600">You're focusing on too much at once.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😔</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Disappointment</h3>
+                    <p class="text-sm text-gray-600">You believed it would go differently - and that's okay.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>🤔</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Doubt</h3>
+                    <p class="text-sm text-gray-600">You're questioning what's possible - clarity is coming.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😟</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Worry</h3>
+                    <p class="text-sm text-gray-600">You're projecting uncertainty - gently release what's not here yet.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>👆</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Blame</h3>
+                    <p class="text-sm text-gray-600">You're handing power away - but you can take it back.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😞</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Discouragement</h3>
+                    <p class="text-sm text-gray-600">You're feeling the gap - but momentum can shift with one thought.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hi Opportunity Tab Content -->
+        <div id="hi-opportunity" class="tab-content space-y-5">
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😠</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Anger</h3>
+                    <p class="text-sm text-gray-600">You feel your boundaries have been crossed - and that matters.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>⚖️</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Revenge</h3>
+                    <p class="text-sm text-gray-600">You're seeking balance - alignment will feel even better.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😡</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Hatred / Rage</h3>
+                    <p class="text-sm text-gray-600">You're resisting deeply - but your clarity is also growing.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😒</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Jealousy</h3>
+                    <p class="text-sm text-gray-600">You want more for yourself - and that's a powerful desire.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😰</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Insecurity</h3>
+                    <p class="text-sm text-gray-600">You're forgetting your alignment - but your worth hasn't changed.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😔</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Guilt / Unworthiness</h3>
+                    <p class="text-sm text-gray-600">You're misaligned with your own value - but Source never is.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😨</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Fear</h3>
+                    <p class="text-sm text-gray-600">You're imagining disconnection - the truth is, you're never alone.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😢</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Grief</h3>
+                    <p class="text-sm text-gray-600">You're honoring something meaningful - and love still remains.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer emotion-item">
+                <div class="icon-circle"><span>😞</span></div>
+                <div>
+                    <h3 class="font-semibold text-gray-800">Depression / Powerlessness</h3>
+                    <p class="text-sm text-gray-600">You feel far from alignment - but the smallest shift counts.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Button -->
-         <div class="pt-4">
-             <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200" onclick="window.location.href='frequency-tracker.html'">
-                 Continue
-             </button>
-         </div>
+        <div class="pt-4">
+            <button id="continue-button" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 disabled:opacity-50" disabled>
+                Continue
+            </button>
+        </div>
 
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all tabs and contents
+                    tabLinks.forEach(l => l.classList.remove('border-gray-900', 'text-gray-900'));
+                    tabLinks.forEach(l => l.classList.add('border-transparent'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.remove('border-transparent');
+                    this.classList.add('border-gray-900', 'text-gray-900');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            const emotionItems = document.querySelectorAll('.emotion-item');
+            const continueButton = document.getElementById('continue-button');
+            let selectedEmotion = null;
+
+            // Load previously selected emotion from localStorage
+            const savedEmotion = localStorage.getItem('userSelectedEmotion');
+            if (savedEmotion) {
+                emotionItems.forEach(item => {
+                    const emotionName = item.querySelector('h3').textContent;
+                    if (emotionName === savedEmotion) {
+                        selectedEmotion = emotionName;
+                        item.classList.add('bg-violet-200', 'ring-2', 'ring-violet-400');
+                        item.classList.remove('hover:bg-gray-100');
+                        continueButton.disabled = false;
+                    }
+                });
+            }
+
+            emotionItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const emotionName = this.querySelector('h3').textContent;
+                    
+                    // If clicking the same emotion, deselect it
+                    if (selectedEmotion === emotionName) {
+                        selectedEmotion = null;
+                        this.classList.remove('bg-violet-200', 'ring-2', 'ring-violet-400');
+                        this.classList.add('hover:bg-gray-100');
+                        continueButton.disabled = true;
+                        console.log('Deselected:', emotionName);
+                        return;
+                    }
+
+                    selectedEmotion = emotionName;
+
+                    // Remove selected style from all items
+                    emotionItems.forEach(el => {
+                        el.classList.remove('bg-violet-200', 'ring-2', 'ring-violet-400');
+                        el.classList.add('hover:bg-gray-100');
+                    });
+                    // Add selected style to the clicked item
+                    this.classList.add('bg-violet-200', 'ring-2', 'ring-violet-400');
+                    this.classList.remove('hover:bg-gray-100');
+
+                    // Enable the continue button
+                    continueButton.disabled = false;
+
+                    console.log('Selected:', selectedEmotion);
+                });
+            });
+
+            continueButton.addEventListener('click', function() {
+                if (selectedEmotion) {
+                    localStorage.setItem('userSelectedEmotion', selectedEmotion);
+                    console.log('Stored in localStorage:', selectedEmotion);
+                    window.location.href = 'frequency-tracker.html';
+                } else {
+                    alert('Please select an emotion first.');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

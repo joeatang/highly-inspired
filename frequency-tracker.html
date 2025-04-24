@@ -28,70 +28,22 @@
     <div class="bg-white w-full max-w-lg rounded-lg shadow-md p-6 md:p-8 space-y-6 md:space-y-8">
 
         <!-- Header -->
-        <div class="flex justify-between items-center">
-             <div class="text-3xl font-black text-blue-600">Hi</div>
-             <div class="flex items-center space-x-2 text-sm font-medium text-gray-700">
-                 <span>Hi Island</span>
-                 <span class="text-xl">🌎</span>
-             </div>
+        <div class="relative flex flex-col items-center">
+            <div class="absolute right-0 top-0 flex items-center space-x-2 text-sm font-medium text-gray-700">
+                <a href="home.html"><span><span class="text-xl">🌍</span> Hi Island</span></a>
+            </div>
+            <a href="home.html"><img src="HI_Logo.png" alt="HI Logo" class="w-12 h-auto"></a>
+            <!-- <div class="text-sm font-semibold text-gray-700 mt-2">Today's Hiffirmation</div> -->
         </div>
 
         <!-- Title -->
         <h1 class="text-center text-lg font-semibold text-gray-800">
-            Where's your frequency right now?
+            Why is that feeling important to you today?
         </h1>
-
-        <!-- Tabs -->
-        <div class="border-b border-gray-200">
-            <nav class="-mb-px flex justify-center space-x-6 md:space-x-8 text-sm font-medium text-gray-500">
-                <a href="#" class="border-b-2 border-gray-900 text-gray-900 py-2 px-1">Hi Energy</a>
-                <a href="#" class="border-b-2 border-transparent hover:border-gray-400 hover:text-gray-700 py-2 px-1">Neutral</a>
-                <a href="#" class="border-b-2 border-transparent hover:border-gray-400 hover:text-gray-700 py-2 px-1">Hi Inspiration</a>
-            </nav>
-        </div>
-
         <!-- Form -->
-        <form class="space-y-6" action="hi-per-moment.html" method="get">
-             <!-- Feeling Now -->
-             <div>
-                 <label for="current-feeling" class="block text-sm font-medium text-gray-700 mb-1">
-                     What emotion best describes how you're feeling right now?
-                 </label>
-                 <select id="current-feeling" name="current-feeling" class="w-full bg-gray-100 border-gray-100 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
-                     <option value="">Select a feeling</option>
-                     <option value="joy">Joy</option>
-                     <option value="passion">Passion</option>
-                     <option value="enthusiasm">Enthusiasm</option>
-                     {/* Add more options here */}
-                 </select>
-             </div>
-
-             <!-- Button 1 -->
-             <div>
-                 <button type="button" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200">
-                     Say Hi to this feeling
-                 </button>
-             </div>
-
-             <!-- Desired Feeling -->
-             <div>
-                 <label for="desired-emotion" class="block text-sm font-medium text-gray-700 mb-1">
-                     Is there a feeling you'd like to hold onto or invite in?
-                 </label>
-                 <select id="desired-emotion" name="desired-emotion" class="w-full bg-gray-100 border-gray-100 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
-                     <option value="">Select a desired emotion</option>
-                     <option value="gratitude">Gratitude</option>
-                     <option value="peace">Peace</option>
-                     <option value="confidence">Confidence</option>
-                      {/* Add more options here */}
-                 </select>
-             </div>
-
+        <form class="space-y-6" id="reflection-form">
              <!-- Why Important -->
              <div>
-                  <label for="why-important" class="block text-sm font-medium text-gray-700 mb-1">
-                      Why is that feeling important to you today?
-                  </label>
                   <p class="text-xs text-gray-500 mb-2">Write a thought, a reason, or even a word. This part is just for you.</p>
                   <textarea id="why-important" name="why-important" rows="4" class="w-full bg-gray-100 border-gray-100 rounded-lg p-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Because when I feel grateful, I'm more present and generous."></textarea>
              </div>
@@ -102,10 +54,20 @@
                     Reflect
                 </button>
             </div>
+            <div class="text-center">
+                <a href="emotional-level.html" class="text-sm text-violet-600 hover:text-violet-800 transition duration-150">Go Back</a>
+            </div>
         </form>
-
 
     </div>
 
+    <script>
+        document.getElementById('reflection-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const reflection = document.getElementById('why-important').value;
+            localStorage.setItem('userReflection', reflection);
+            window.location.href = 'hi-per-moment.html';
+        });
+    </script>
 </body>
 </html>

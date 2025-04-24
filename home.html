@@ -28,15 +28,22 @@
 
     <!-- Main Content Container -->
     <div class="max-w-3xl mx-auto space-y-8">
+
         <!-- Sparks Banner -->
         <div class="bg-violet-50 rounded-lg p-4 text-center">
             <p class="text-lg font-semibold text-orange-500">Day 5 | 5 Sparks</p>
             <p class="text-sm text-gray-600 mt-1">Tap your band daily to stack rewards!</p>
         </div>
+        <!-- Header -->
+        <div class="relative flex justify-center items-center mb-6">
+            <!-- Logo -->
+            <a href="home.html"><img src="HI_Logo.png" alt="HI Logo" class="mx-auto w-20 md:w-24 h-auto"></a>
 
-        <!-- HI Logo -->
-        <div class="text-center my-6 md:my-8">
-            <img src="HI_Logo.png" alt="HI Logo" class="mx-auto w-24 md:w-32 h-auto">
+            <!-- Streak Badge - Top Right -->
+            <div class="absolute top-0 right-0 flex items-center space-x-2 bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold shadow-sm cursor-pointer" title="Tap your band daily to stack rewards!">
+                 <span>🔥</span>
+                 <span>5 Day Streak</span>
+            </div>
         </div>
 
         <!-- Daily Hi-ffirmation Section -->
@@ -47,107 +54,169 @@
                     Your energy is your currency. Invest it in high-vibe thoughts and watch your abundance multiply faster than you can say 'Hi!'
                 </p>
             </div>
-            <button class="bg-orange-100 text-orange-700 font-semibold px-6 py-2 rounded-full hover:bg-orange-200 transition duration-200">
-                Share my Hi
-            </button>
-        </section>
-
-        <!-- HI's Around the World Section -->
-        <section class="space-y-6">
-            <h2 class="text-xl font-semibold text-center">HI's Around the World</h2>
-
-            <div class="space-y-4">
-                <!-- Card 1: Tokyo -->
-                <div class="bg-violet-50 rounded-lg p-4 space-y-2">
-                    <p class="text-xs text-gray-500 flex items-center">
-                        <span class="text-lg mr-2">🌎</span> Tokyo, Japan
-                    </p>
-                    <h3 class="font-semibold">Staying Hi: 11</h3>
-                    <p class="text-sm text-gray-700">
-                        Current: 😊 | Desired: 👋 | Choosing my HI: Morning meditation and matcha tea ritual keeping my energy aligned with abundance.
-                    </p>
-                </div>
-
-                <!-- Card 2: Rio -->
-                <div class="bg-violet-50 rounded-lg p-4 space-y-2">
-                    <p class="text-xs text-gray-500 flex items-center">
-                        <span class="text-lg mr-2">🌎</span> Rio de Janeiro, Brazil
-                    </p>
-                    <h3 class="font-semibold">Staying Hi: 13</h3>
-                    <p class="text-sm text-gray-700">
-                        Current: 😊 | Desired: 👋 | Choosing my HI: Beach sunrise surf session. Pure connection with water energy.
-                    </p>
-                </div>
-
-                <!-- Card 3: Cape Town -->
-                <div class="bg-violet-50 rounded-lg p-4 space-y-2">
-                    <p class="text-xs text-gray-500 flex items-center">
-                         <span class="text-lg mr-2">🌎</span> Cape Town, South Africa
-                    </p>
-                    <h3 class="font-semibold">Staying Hi: 9</h3>
-                    <p class="text-sm text-gray-700">
-                        Current: 😊 | Desired: 👋 | Choosing my HI: Gratitude journaling and mountain views to elevate my frequency.
-                    </p>
-                </div>
-
-                <!-- Card 4: Barcelona -->
-                <div class="bg-violet-50 rounded-lg p-4 space-y-2">
-                    <p class="text-xs text-gray-500 flex items-center">
-                         <span class="text-lg mr-2">🌎</span> Barcelona, Spain
-                    </p>
-                    <h3 class="font-semibold">Staying Hi: 12</h3>
-                    <p class="text-sm text-gray-700">
-                        Current: 😊 | Desired: 👋 | Choosing my HI: Gaudi architecture walks and creative visualization practice.
-                    </p>
-                </div>
-
-                <!-- Card 5: Melbourne -->
-                <div class="bg-violet-50 rounded-lg p-4 space-y-2">
-                    <p class="text-xs text-gray-500 flex items-center">
-                         <span class="text-lg mr-2">🌎</span> Melbourne, Australia
-                    </p>
-                    <h3 class="font-semibold">Staying Hi: 10</h3>
-                    <p class="text-sm text-gray-700">
-                        Current: 😊 | Desired: 👋 | Choosing my HI: Ocean swims and affirmations to raise my vibration daily.
-                    </p>
-                </div>
+            <div class="flex justify-center space-x-4">
+                <button onclick="window.location.href='hi-per-moment.html'" class="bg-orange-100 text-orange-700 font-semibold px-6 py-2 rounded-full hover:bg-orange-200 transition duration-200">
+                    Share my Hi
+                </button>
+                <button onclick="window.location.href='emotional-level.html'" class="bg-violet-100 text-violet-700 font-semibold px-6 py-2 rounded-full hover:bg-violet-200 transition duration-200">
+                    Update Energy
+                </button>
             </div>
         </section>
 
-        <!-- Global HI Map Section -->
-        <section class="text-center space-y-4">
-            <h2 class="text-xl font-semibold">Global HI Map</h2>
-            <div>
-                <div id="map" style="height: 400px; width: 100%;" class="rounded-lg shadow-md"></div>
-                <script>
-                    var map = L.map('map').setView([20, 0], 2);
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    }).addTo(map);
+        <!-- Tabs Navigation -->
+        <div class="border-b border-gray-200 mb-6">
+            <nav class="-mb-px flex justify-around space-x-4 text-sm font-medium text-center text-gray-500">
+                <a href="#" class="tab-link flex-1 py-3 px-1 border-b-2 border-indigo-500 text-indigo-600" data-tab="community">
+                    Community Hi's
+                </a>
+                <a href="#" class="tab-link flex-1 py-3 px-1 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700 text-gray-400 cursor-not-allowed" data-tab="archive">
+                    My Archive
+                </a>
+                <a href="#" class="tab-link flex-1 py-3 px-1 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700 text-gray-400 cursor-not-allowed" data-tab="insights">
+                    Insights
+                </a>
+            </nav>
+        </div>
 
-                    // Add markers for each city
-                    L.marker([35.6762, 139.6503]).addTo(map)  // Tokyo
-                        .bindPopup('Tokyo, Japan<br>Staying Hi: 11');
-                    
-                    L.marker([-22.9068, -43.1729]).addTo(map)  // Rio
-                        .bindPopup('Rio de Janeiro, Brazil<br>Staying Hi: 13');
-                    
-                    L.marker([-33.9249, 18.4241]).addTo(map)   // Cape Town
-                        .bindPopup('Cape Town, South Africa<br>Staying Hi: 9');
-                    
-                    L.marker([41.3851, 2.1734]).addTo(map)     // Barcelona
-                        .bindPopup('Barcelona, Spain<br>Staying Hi: 12');
-                    
-                    L.marker([-37.8136, 144.9631]).addTo(map)  // Melbourne
-                        .bindPopup('Melbourne, Australia<br>Staying Hi: 10');
-                </script>
+        <!-- Tab Content Area -->
+        <div>
+            <!-- Community Tab Content (Visible by default) -->
+            <div id="community-content" class="tab-content space-y-8">
+                <!-- HI's Around the World Section -->
+                <section class="space-y-6">
+                    <h2 class="text-xl font-semibold text-center">HI's Around the World</h2>
+                    <div class="space-y-4">
+                        <!-- Card 1: Tokyo -->
+                        <div class="bg-violet-50 rounded-lg p-4 space-y-2">
+                            <p class="text-xs text-gray-500 flex items-center">
+                                <span class="text-lg mr-2">🌎</span> Tokyo, Japan
+                            </p>
+                            <h3 class="font-semibold">Staying Hi: 11</h3>
+                            <p class="text-sm text-gray-700">
+                                Current: 😊 | Desired: 👋 | Choosing my HI: Morning meditation and matcha tea ritual keeping my energy aligned with abundance.
+                            </p>
+                        </div>
+
+                        <!-- Card 2: Rio -->
+                        <div class="bg-violet-50 rounded-lg p-4 space-y-2">
+                            <p class="text-xs text-gray-500 flex items-center">
+                                <span class="text-lg mr-2">🌎</span> Rio de Janeiro, Brazil
+                            </p>
+                            <h3 class="font-semibold">Staying Hi: 13</h3>
+                            <p class="text-sm text-gray-700">
+                                Current: 😊 | Desired: 👋 | Choosing my HI: Beach sunrise surf session. Pure connection with water energy.
+                            </p>
+                        </div>
+
+                        <!-- Card 3: Cape Town -->
+                        <div class="bg-violet-50 rounded-lg p-4 space-y-2">
+                            <p class="text-xs text-gray-500 flex items-center">
+                                <span class="text-lg mr-2">🌎</span> Cape Town, South Africa
+                            </p>
+                            <h3 class="font-semibold">Staying Hi: 9</h3>
+                            <p class="text-sm text-gray-700">
+                                Current: 😊 | Desired: 👋 | Choosing my HI: Gratitude journaling and mountain views to elevate my frequency.
+                            </p>
+                        </div>
+
+                        <!-- Card 4: Barcelona -->
+                        <div class="bg-violet-50 rounded-lg p-4 space-y-2">
+                            <p class="text-xs text-gray-500 flex items-center">
+                                <span class="text-lg mr-2">🌎</span> Barcelona, Spain
+                            </p>
+                            <h3 class="font-semibold">Staying Hi: 12</h3>
+                            <p class="text-sm text-gray-700">
+                                Current: 😊 | Desired: 👋 | Choosing my HI: Gaudi architecture walks and creative visualization practice.
+                            </p>
+                        </div>
+
+                        <!-- Card 5: Melbourne -->
+                        <div class="bg-violet-50 rounded-lg p-4 space-y-2">
+                            <p class="text-xs text-gray-500 flex items-center">
+                                <span class="text-lg mr-2">🌎</span> Melbourne, Australia
+                            </p>
+                            <h3 class="font-semibold">Staying Hi: 10</h3>
+                            <p class="text-sm text-gray-700">
+                                Current: 😊 | Desired: 👋 | Choosing my HI: Ocean swims and affirmations to raise my vibration daily.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Global HI Map Section -->
+                <section class="text-center space-y-4">
+                    <h2 class="text-xl font-semibold">Global HI Map</h2>
+                    <div>
+                        <div id="map" style="height: 400px; width: 100%;" class="rounded-lg shadow-md"></div>
+                        <script>
+                            var map = L.map('map').setView([20, 0], 2);
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            }).addTo(map);
+
+                            // Add markers for each city
+                            L.marker([35.6762, 139.6503]).addTo(map)  // Tokyo
+                                .bindPopup('Tokyo, Japan<br>Staying Hi: 11');
+                            
+                            L.marker([-22.9068, -43.1729]).addTo(map)  // Rio
+                                .bindPopup('Rio de Janeiro, Brazil<br>Staying Hi: 13');
+                            
+                            L.marker([-33.9249, 18.4241]).addTo(map)   // Cape Town
+                                .bindPopup('Cape Town, South Africa<br>Staying Hi: 9');
+                            
+                            L.marker([41.3851, 2.1734]).addTo(map)     // Barcelona
+                                .bindPopup('Barcelona, Spain<br>Staying Hi: 12');
+                            
+                            L.marker([-37.8136, 144.9631]).addTo(map)  // Melbourne
+                                .bindPopup('Melbourne, Australia<br>Staying Hi: 10');
+                        </script>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                        Each 👋 represents a real-time HI submission
+                    </p>
+                </section>
             </div>
-            <p class="text-sm text-gray-600">
-                Each 👋 represents a real-time HI submission
-            </p>
-        </section>
 
+            <!-- Archive Tab Content (Hidden by default/Placeholder) -->
+            <div id="archive-content" class="tab-content hidden text-center text-gray-500 py-10">
+                <p>Your personal Hi-story will appear here. Coming Soon!</p>
+            </div>
+
+            <!-- Insights Tab Content (Hidden by default/Placeholder) -->
+            <div id="insights-content" class="tab-content hidden text-center text-gray-500 py-10">
+                <p>Insights and guides based on energy levels. Coming Soon!</p>
+            </div>
+        </div>
     </div>
 
+    <!-- Add tab switching functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    // Update active tab styles
+                    tabLinks.forEach(l => {
+                        l.classList.remove('border-indigo-500', 'text-indigo-600');
+                        l.classList.add('border-transparent', 'text-gray-400');
+                    });
+                    this.classList.remove('border-transparent', 'text-gray-400');
+                    this.classList.add('border-indigo-500', 'text-indigo-600');
+
+                    // Show/hide tab contents
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    document.getElementById(`${targetTab}-content`).classList.remove('hidden');
+                });
+            });
+        });
+    </script>
 </body>
 </html>

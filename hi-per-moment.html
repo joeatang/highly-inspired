@@ -13,19 +13,31 @@
         .icon-circle {
              @apply bg-violet-100 text-violet-600 rounded-full w-8 h-8 flex items-center justify-center text-lg shrink-0;
         }
+        #share-template {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 400px;
+            padding: 20px;
+            background: linear-gradient(to bottom right, #a78bfa, #6366f1);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
     </style>
+    <!-- Add html2canvas library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body class="bg-gray-50 flex justify-center items-start min-h-screen py-10 px-4">
 
     <div class="bg-white w-full max-w-lg rounded-lg shadow-md p-6 md:p-8 space-y-6 md:space-y-8">
 
         <!-- Header -->
-        <div class="flex justify-between items-center">
-             <div class="text-3xl font-black text-blue-600">Hi</div>
-             <div class="flex items-center space-x-2 text-sm font-medium text-gray-700">
-                 <span>Hi Island</span>
-                 <span class="text-xl">🌎</span>
-             </div>
+        <div class="relative flex flex-col items-center">
+            <div class="absolute right-0 top-0 flex items-center space-x-2 text-sm font-medium text-gray-700">
+                <a href="home.html"><span><span class="text-xl">🌍</span> Hi Island</span></a>
+            </div>
+            <a href="home.html"><img src="HI_Logo.png" alt="HI Logo" class="w-12 h-auto"></a>
+            <!-- <div class="text-sm font-semibold text-gray-700 mt-2">Today's Hiffirmation</div> -->
         </div>
 
         <!-- Title -->
@@ -40,11 +52,11 @@
                      <span>🪄</span> <!-- Placeholder magic wand icon -->
                  </div>
              </div>
-             <p class="text-lg font-semibold text-gray-900">
+             <p class="text-lg font-semibold text-gray-900" id="hi-title">
                  Hi Five 👋
              </p>
-             <p class="text-sm text-gray-700">
-                 You're doing this. Say Hi to your confidence. It's already inside you.
+             <p class="text-sm text-gray-700" id="hi-affirmation-text">
+                 You're doing this. Say Hi to yourself. It's already inside you.
              </p>
         </div>
 
@@ -55,7 +67,7 @@
 
              <div class="space-y-3">
                  <!-- Option 1 -->
-                 <a href="#" class="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition duration-150 cursor-pointer">
+                 <a href="#" id="visual-share-link" class="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition duration-150 cursor-pointer">
                      <div class="flex items-center space-x-3">
                          <div class="icon-circle"><span>🔗</span></div>
                          <div>
@@ -92,13 +104,224 @@
 
 
         <!-- Button -->
-         <div class="pt-4">
+         <div class="pt-4 space-y-3">
              <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200" onclick="window.location.href='home.html'">
                  Create New Hi Moment
              </button>
+             <div class="text-center">
+                 <a href="frequency-tracker.html" class="text-sm text-violet-600 hover:text-violet-800 transition duration-150">Go Back</a>
+             </div>
          </div>
 
     </div>
 
+    <!-- Share Template (Hidden via CSS positioning) -->
+    <div id="share-template">
+        <img src="HI_Logo_White.png" alt="HI Logo" style="width: 40px; margin-bottom: 15px;">
+        <h3 style="font-size: 1.5em; font-weight: 600;" id="share-title">Hi [Emotion] 👋</h3>
+        <p style="font-size: 1em; margin-top: 10px;" id="share-text">You're doing this. Say Hi to your [emotion]. It's already inside you.</p>
+        <p style="font-size: 0.8em; margin-top: 20px; text-align: right; opacity: 0.7;">via Hi Island</p>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="fixed inset-0 bg-gray-900 bg-opacity-60 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl p-6 max-w-md w-full relative">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">Share Preview</h3>
+                <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800 text-2xl">×</button>
+            </div>
+
+            <!-- Image Preview Area -->
+            <div class="mb-4 border border-gray-200 rounded overflow-hidden">
+                <img id="preview-image" src="" alt="Share Preview" class="block w-full h-auto">
+            </div>
+
+            <!-- Action Button -->
+            <div class="text-right">
+                <button id="download-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-lg transition duration-200">
+                    Download Image
+                </button>
+            </div>
+
+            <!-- Additional Share Options -->
+            <div class="mt-4 pt-4 border-t border-gray-200 space-y-3">
+                <button id="copy-text-btn" class="w-full text-left flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg transition duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                    <span>Copy Affirmation Text</span>
+                </button>
+
+                <!-- Placeholder for Web Share or Fallback Links -->
+                <div id="dynamic-share-options">
+                    <!-- Content here will be added by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the stored emotion
+            const storedEmotion = localStorage.getItem('userSelectedEmotion');
+            const affirmationElement = document.getElementById('hi-affirmation-text');
+            const titleElement = document.getElementById('hi-title');
+            const visualShareLink = document.getElementById('visual-share-link');
+            const shareTemplate = document.getElementById('share-template');
+            const shareTitle = document.getElementById('share-title');
+            const shareText = document.getElementById('share-text');
+
+            // Modal Elements
+            const modal = document.getElementById('preview-modal');
+            const previewImageElement = document.getElementById('preview-image');
+            const closeModalButton = document.getElementById('close-modal-btn');
+            const downloadButton = document.getElementById('download-btn');
+            const copyTextButton = document.getElementById('copy-text-btn');
+            const dynamicShareContainer = document.getElementById('dynamic-share-options');
+
+            let generatedImageDataUrl = null; // To store the generated image data
+            let affirmationTextForSharing = ''; // Store the text to be shared
+
+            if (storedEmotion && affirmationElement) {
+                console.log('Retrieved from localStorage:', storedEmotion);
+                const emotionLower = storedEmotion.toLowerCase();
+                affirmationElement.textContent = `You're doing this. Say Hi to your ${emotionLower}. It's already inside you.`;
+                if (titleElement) {
+                    titleElement.textContent = `Hi ${storedEmotion} 👋`;
+                }
+                shareTitle.textContent = `Hi ${storedEmotion} 👋`;
+                shareText.textContent = `You're doing this. Say Hi to your ${emotionLower}. It's already inside you.`;
+                affirmationTextForSharing = `You're doing this. Say Hi to your ${emotionLower}. It's already inside you. #HiMoment`;
+            } else {
+                console.log('No emotion found in localStorage.');
+                // Set default share template content if needed
+                shareTitle.textContent = `Hi Five 👋`;
+                shareText.textContent = `You're doing this. Say Hi to yourself. It's already inside you.`;
+                affirmationTextForSharing = "You're doing this. Say Hi to yourself. It's already inside you. #HiMoment";
+                // Ensure main content defaults are correct too if needed
+                if (titleElement) titleElement.textContent = 'Hi Five 👋';
+                if (affirmationElement) affirmationElement.textContent = "You're doing this. Say Hi to yourself. It's already inside you.";
+            }
+
+            // --- Handle visual share link click ---
+            visualShareLink.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Show some kind of loading state maybe? (Optional)
+                visualShareLink.style.opacity = '0.5'; // Simple visual feedback
+
+                html2canvas(shareTemplate, {
+                    useCORS: true,
+                    backgroundColor: null,
+                    // Improve rendering quality slightly (optional)
+                    scale: window.devicePixelRatio > 1 ? window.devicePixelRatio : 2
+                }).then(canvas => {
+                    visualShareLink.style.opacity = '1'; // Restore opacity
+
+                    // Get the image data URL
+                    generatedImageDataUrl = canvas.toDataURL('image/png');
+
+                    // Update the modal's image source
+                    previewImageElement.src = generatedImageDataUrl;
+
+                    // Setup dynamic share options
+                    setupShareOptions();
+
+                    // Show the modal
+                    modal.classList.remove('hidden');
+
+                }).catch(err => {
+                    console.error("Error generating canvas: ", err);
+                    visualShareLink.style.opacity = '1'; // Restore opacity
+                    alert('Sorry, could not generate the share image.');
+                });
+            });
+
+            // Function to set up dynamic share buttons
+            function setupShareOptions() {
+                dynamicShareContainer.innerHTML = ''; // Clear previous options
+
+                const shareData = {
+                    title: 'My Hi Moment',
+                    text: affirmationTextForSharing,
+                    // url: 'https://your-app-url.com' // Optional: Add URL if applicable
+                };
+
+                // Check for Web Share API
+                if (navigator.share) {
+                    const webShareButton = document.createElement('button');
+                    webShareButton.className = 'w-full flex items-center justify-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200';
+                    webShareButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" /></svg> <span>Share...</span>`;
+
+                    webShareButton.addEventListener('click', async () => {
+                        try {
+                            await navigator.share(shareData);
+                            console.log('Content shared successfully');
+                        } catch (err) {
+                            console.error('Error sharing:', err);
+                        }
+                    });
+                    dynamicShareContainer.appendChild(webShareButton);
+                } else {
+                    // Fallback: Show direct links
+                    console.log('Web Share API not supported, showing fallback links.');
+                    const fallbackHtml = `
+                        <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}" target="_blank" rel="noopener noreferrer" class="block text-center bg-gray-700 hover:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg transition duration-200">Share on X</a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?text=${encodeURIComponent(shareData.text)}" target="_blank" rel="noopener noreferrer" class="block text-center bg-blue-800 hover:bg-blue-900 text-white font-medium py-2 px-4 rounded-lg transition duration-200">Share on Facebook</a>
+                        <a href="mailto:?subject=${encodeURIComponent(shareData.title)}&body=${encodeURIComponent(shareData.text)}" class="block text-center bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition duration-200">Share via Email</a>
+                    `;
+                    dynamicShareContainer.innerHTML = fallbackHtml;
+                }
+            }
+
+            // Handle Copy Text Button
+            copyTextButton.addEventListener('click', function() {
+                if (!affirmationTextForSharing) return;
+
+                navigator.clipboard.writeText(affirmationTextForSharing).then(() => {
+                    // Optional: Give user feedback (e.g., change button text)
+                    const originalText = copyTextButton.innerHTML;
+                    copyTextButton.innerHTML = `<span>✅ Copied!</span>`;
+                    setTimeout(() => {
+                        copyTextButton.innerHTML = originalText;
+                    }, 1500); // Reset after 1.5 seconds
+                }).catch(err => {
+                    console.error('Failed to copy text: ', err);
+                    alert('Failed to copy text.');
+                });
+            });
+
+            // Handle Modal Close Button
+            closeModalButton.addEventListener('click', function() {
+                modal.classList.add('hidden');
+                previewImageElement.src = ''; // Clear image src
+                generatedImageDataUrl = null; // Clear stored data
+            });
+
+            // Handle Clicking Outside the Modal Content (on the overlay)
+            modal.addEventListener('click', function(event) {
+                 // Check if the click was directly on the modal background (the overlay)
+                if (event.target === modal) {
+                    modal.classList.add('hidden');
+                    previewImageElement.src = ''; // Clear image src
+                    generatedImageDataUrl = null; // Clear stored data
+                }
+            });
+
+            // Handle Modal Download Button
+            downloadButton.addEventListener('click', function() {
+                if (generatedImageDataUrl) {
+                    const link = document.createElement('a');
+                    link.href = generatedImageDataUrl;
+                    link.download = 'my-hi-moment.png';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    alert("Image data not found, please try generating again.");
+                }
+            });
+
+        }); // End DOMContentLoaded
+    </script>
 </body>
 </html>
