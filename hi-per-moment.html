@@ -161,8 +161,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get the stored emotion
-            const storedEmotion = localStorage.getItem('userSelectedEmotion');
+            // Prefer goal emotion, fall back to current emotion
+            const storedEmotion = localStorage.getItem('hi.goalEmotion') || localStorage.getItem('hi.currentEmotion');
             const affirmationElement = document.getElementById('hi-affirmation-text');
             const titleElement = document.getElementById('hi-title');
             const visualShareLink = document.getElementById('visual-share-link');

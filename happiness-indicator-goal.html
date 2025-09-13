@@ -36,7 +36,7 @@
 
         <!-- Title -->
         <h1 class="text-center text-lg font-semibold text-gray-800">
-            Happiness Indicator 2: Emotional Goal
+            Happiness Indicator 2: Vibe Goal
         </h1>
 
         <!-- Tabs -->
@@ -312,8 +312,8 @@
             const continueButton = document.getElementById('continue-button');
             let selectedEmotion = null;
 
-            // Load previously selected emotion from localStorage
-            const savedEmotion = localStorage.getItem('userSelectedEmotion');
+            // Load only the previously saved goal emotion (do not fall back to current)
+            const savedEmotion = localStorage.getItem('hi.goalEmotion');
             if (savedEmotion) {
                 emotionItems.forEach(item => {
                     const emotionName = item.querySelector('h3').textContent;
@@ -360,7 +360,8 @@
 
             continueButton.addEventListener('click', function() {
                 if (selectedEmotion) {
-                    localStorage.setItem('userSelectedEmotion', selectedEmotion);
+                    // Persist goal emotion under namespaced key
+                    localStorage.setItem('hi.goalEmotion', selectedEmotion);
                     console.log('Stored in localStorage:', selectedEmotion);
                     window.location.href = 'frequency-tracker.html';
                 } else {

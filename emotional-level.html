@@ -312,8 +312,8 @@
             const continueButton = document.getElementById('continue-button');
             let selectedEmotion = null;
 
-            // Load previously selected emotion from localStorage
-            const savedEmotion = localStorage.getItem('userSelectedEmotion');
+            // Load previously selected emotion from localStorage (namespaced key)
+            const savedEmotion = localStorage.getItem('hi.currentEmotion');
             if (savedEmotion) {
                 emotionItems.forEach(item => {
                     const emotionName = item.querySelector('h3').textContent;
@@ -360,9 +360,10 @@
 
             continueButton.addEventListener('click', function() {
                 if (selectedEmotion) {
-                    localStorage.setItem('userSelectedEmotion', selectedEmotion);
+                    // Store selected as current emotion under namespaced key
+                    localStorage.setItem('hi.currentEmotion', selectedEmotion);
                     console.log('Stored in localStorage:', selectedEmotion);
-                    window.location.href = 'frequency-tracker.html';
+                    window.location.href = 'happiness-indicator-goal.html';
                 } else {
                     alert('Please select an emotion first.');
                 }
